@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { gray300 } from "../../assets/styles/variables";
 import {
   Container,
   Input,
@@ -6,11 +8,26 @@ import {
   AddButtonTextContainer,
 } from "./styles";
 
-const InputWithButton = () => {
+interface Props {
+  onAdd: (description: string) => void;
+}
+
+const InputWithButton = ({ onAdd }: Props) => {
+  const [description, setDescription] = useState("");
+
+  function handleAdd(): void {
+    onAdd(description);
+    setDescription("");
+  }
+
   return (
     <Container>
-      <Input />
-      <AddButton>
+      <Input
+        value={description}
+        onChangeText={setDescription}
+        placeholder="Adicione uma nova tarefa"
+      />
+      <AddButton onPress={handleAdd}>
         <AddButtonTextContainer>
           <AddButtonText>+</AddButtonText>
         </AddButtonTextContainer>

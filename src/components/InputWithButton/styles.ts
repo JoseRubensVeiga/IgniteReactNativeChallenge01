@@ -1,5 +1,5 @@
 import styled from "styled-components/native";
-import { blueDark, gray500 } from "../../assets/styles/variables";
+import { blueDark, gray300, gray500 } from "../../assets/styles/variables";
 
 export const Container = styled.View`
   height: 54px;
@@ -9,7 +9,9 @@ export const Container = styled.View`
   gap: 4px;
 `;
 
-export const Input = styled.TextInput`
+export const Input = styled.TextInput.attrs({
+  placeholderTextColor: gray300,
+})`
   background-color: ${gray500};
   height: 54px;
   border-radius: 6px;
